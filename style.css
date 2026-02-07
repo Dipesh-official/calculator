@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+  font-family: "SF Mono", "Consolas", "Monaco", monospace;
+}
+
+.calculator {
+  background: #0d1117;
+  border-radius: 20px;
+  padding: 24px;
+  box-shadow:
+    0 25px 50px -12px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(255, 255, 255, 0.06),
+    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+}
+
+.display {
+  background: #161b22;
+  border-radius: 12px;
+  padding: 20px 24px;
+  margin-bottom: 20px;
+  min-height: 88px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.display .expression {
+  font-size: 14px;
+  color: #8b949e;
+  min-height: 20px;
+  margin-bottom: 4px;
+  word-break: break-all;
+  text-align: right;
+}
+
+.display .result {
+  font-size: 36px;
+  font-weight: 500;
+  color: #e6edf3;
+  letter-spacing: -0.02em;
+  line-height: 1.2;
+}
+
+.keys {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+.key {
+  border: none;
+  border-radius: 12px;
+  font-size: 22px;
+  font-weight: 500;
+  cursor: pointer;
+  padding: 0;
+  height: 64px;
+  font-family: inherit;
+  transition: transform 0.08s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.key:active {
+  transform: scale(0.96);
+}
+
+.key-num {
+  background: #21262d;
+  color: #e6edf3;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.key-num:hover {
+  background: #30363d;
+}
+
+.key-op {
+  background: #238636;
+  color: #fff;
+}
+
+.key-op:hover {
+  background: #2ea043;
+}
+
+.key-right {
+  grid-column: 4;
+}
+
+.key-clear {
+  background: #da3633;
+  color: #fff;
+}
+
+.key-clear:hover {
+  background: #f85149;
+}
+
+.key-equals {
+  background: #1f6feb;
+  color: #fff;
+}
+
+.key-equals:hover {
+  background: #388bfd;
+}
+
+.key-back {
+  background: #21262d;
+  color: #8b949e;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.key-back:hover {
+  background: #30363d;
+  color: #e6edf3;
+}
+
+.key-zero {
+  grid-column: span 2;
+}
