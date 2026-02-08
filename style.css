@@ -8,28 +8,22 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
-  font-family: "SF Mono", "Consolas", "Monaco", monospace;
+  background: #000;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", system-ui, sans-serif;
 }
 
 .calculator {
   width: 320px;
   min-width: 320px;
-  background: #0d1117;
-  border-radius: 20px;
-  padding: 24px;
-  box-shadow:
-    0 25px 50px -12px rgba(0, 0, 0, 0.5),
-    0 0 0 1px rgba(255, 255, 255, 0.06),
-    inset 0 1px 0 rgba(255, 255, 255, 0.04);
+  background: #000;
+  padding: 20px 16px 32px;
+  max-width: 100%;
 }
 
 .display {
-  background: #161b22;
-  border-radius: 12px;
-  padding: 20px 24px;
-  margin-bottom: 20px;
-  min-height: 88px;
+  background: transparent;
+  padding: 24px 8px 32px;
+  min-height: 100px;
   width: 100%;
   min-width: 0;
   overflow: hidden;
@@ -37,13 +31,13 @@ body {
   flex-direction: column;
   align-items: flex-end;
   justify-content: flex-end;
-  border: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .display .expression {
-  font-size: 14px;
-  color: #8b949e;
-  min-height: 20px;
+  font-size: 28px;
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.5);
+  min-height: 32px;
   margin-bottom: 4px;
   width: 100%;
   min-width: 0;
@@ -54,11 +48,11 @@ body {
 }
 
 .display .result {
-  font-size: 36px;
-  font-weight: 500;
-  color: #e6edf3;
+  font-size: 64px;
+  font-weight: 300;
+  color: #fff;
   letter-spacing: -0.02em;
-  line-height: 1.2;
+  line-height: 1.1;
   width: 100%;
   min-width: 0;
   overflow: hidden;
@@ -70,77 +64,78 @@ body {
 .keys {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 10px;
+  gap: 12px;
 }
 
 .key {
   border: none;
-  border-radius: 12px;
-  font-size: 22px;
-  font-weight: 500;
+  border-radius: 50%;
+  font-size: 28px;
+  font-weight: 400;
   cursor: pointer;
   padding: 0;
-  height: 64px;
+  height: 72px;
   font-family: inherit;
-  transition: transform 0.08s ease, background 0.15s ease, box-shadow 0.15s ease;
+  transition: filter 0.1s ease, transform 0.05s ease;
 }
 
 .key:active {
-  transform: scale(0.96);
+  transform: scale(0.92);
+  filter: brightness(1.2);
 }
 
-.key-num {
-  background: #21262d;
-  color: #e6edf3;
-  border: 1px solid rgba(255, 255, 255, 0.06);
+/* iOS: light gray top row (C, %, ÷) */
+.key-clear,
+.key-op:not(.key-right) {
+  background: #a5a5a5;
+  color: #000;
 }
 
-.key-num:hover {
-  background: #30363d;
+.key-clear:active,
+.key-op:not(.key-right):active {
+  filter: brightness(1.25);
 }
 
-.key-op {
-  background: #238636;
+/* iOS: orange operators (×, −, +) and equals */
+.key-op.key-right,
+.key-equals {
+  background: #ff9f0a;
   color: #fff;
 }
 
-.key-op:hover {
-  background: #2ea043;
+.key-op.key-right:active,
+.key-equals:active {
+  filter: brightness(1.15);
+}
+
+/* iOS: dark gray number keys */
+.key-num {
+  background: #333;
+  color: #fff;
+}
+
+.key-num:active {
+  filter: brightness(1.4);
+}
+
+/* iOS: backspace same as numbers */
+.key-back {
+  background: #333;
+  color: #fff;
+}
+
+.key-back:active {
+  filter: brightness(1.4);
 }
 
 .key-right {
   grid-column: 4;
 }
 
-.key-clear {
-  background: #da3633;
-  color: #fff;
-}
-
-.key-clear:hover {
-  background: #f85149;
-}
-
-.key-equals {
-  background: #1f6feb;
-  color: #fff;
-}
-
-.key-equals:hover {
-  background: #388bfd;
-}
-
-.key-back {
-  background: #21262d;
-  color: #8b949e;
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.key-back:hover {
-  background: #30363d;
-  color: #e6edf3;
-}
-
+/* iOS: zero is pill-shaped, spans 2 columns */
 .key-zero {
   grid-column: span 2;
+  border-radius: 36px;
+  text-align: left;
+  padding-left: 28px;
 }
